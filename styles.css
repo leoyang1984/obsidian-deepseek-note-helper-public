@@ -1,0 +1,855 @@
+/* DeepSeek Note Helper Styles */
+
+.deepseek-chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+}
+
+.chat-action-btns {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    justify-content: flex-start;
+}
+
+.chat-action-btns button {
+    font-size: 0.8em;
+    padding: 4px 8px;
+    height: auto;
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    color: var(--text-muted);
+}
+
+.chat-action-btns button:hover:not(:disabled) {
+    background: var(--background-secondary-alt);
+    color: var(--text-normal);
+    border-color: var(--interactive-accent);
+}
+
+.chat-stop-btn:not(:disabled) {
+    color: var(--text-error) !important;
+}
+
+.chat-export-btn {
+    color: var(--text-accent) !important;
+}
+
+/* Pipeline Approval Card Styles */
+.pipeline-approval {
+    border-left: 4px solid var(--interactive-accent);
+    background-color: var(--background-secondary-alt);
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease-out;
+}
+
+.pipeline-instruction {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.pipeline-edit-area {
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: var(--font-monospace);
+    border: 1px solid var(--background-modifier-border);
+    transition: border-color 0.3s;
+}
+
+.pipeline-edit-area:focus {
+    border-color: var(--interactive-accent);
+}
+
+.pipeline-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.pipeline-resolved {
+    border-left-color: #4caf50;
+    opacity: 0.8;
+}
+
+.pipeline-cancelled {
+    border-left-color: #f44336;
+    opacity: 0.6;
+}
+
+.pipeline-status {
+    font-size: 0.8em;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    background-color: var(--background-primary);
+}
+
+.chat-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-input {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.chat-msg {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.msg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.chat-sender-label {
+    color: var(--text-accent);
+}
+
+.chat-copy-btn {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 2px 6px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.8em;
+}
+
+.chat-hidden {
+    display: none;
+}
+
+.chat-whitespace-pre {
+    white-space: pre-wrap;
+}
+
+.chat-msg-user {
+    background-color: var(--background-primary-alt);
+}
+
+.chat-msg-system {
+    background-color: var(--background-modifier-error-hover);
+}
+
+.chat-msg-assistant {
+    background-color: var(--background-secondary);
+}
+
+.chat-msg-tool {
+    background-color: var(--background-secondary-alt);
+    border-left: 3px solid var(--text-muted);
+    opacity: 0.85;
+    font-size: 0.9em;
+}
+
+/* DeepSeek Hover UI Styles */
+.deepseek-hover-container {
+    position: fixed;
+    z-index: 10000;
+    width: 450px;
+    max-height: 90vh;
+    min-width: 300px;
+    min-height: 200px;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: deepseek-fade-in 0.2s ease-out;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    resize: both;
+}
+
+/* DeepSeek Hover Drag Handle */
+.deepseek-hover-drag-handle {
+    width: 100%;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.deepseek-hover-drag-handle:active {
+    cursor: grabbing;
+}
+
+.deepseek-hover-drag-pill {
+    width: 32px;
+    height: 4px;
+    background-color: var(--background-modifier-border);
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+.deepseek-hover-drag-handle:hover .deepseek-hover-drag-pill {
+    background-color: var(--text-muted);
+}
+
+/* Result Wrapper & Copy Button */
+.deepseek-hover-result-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.deepseek-hover-copy-btn {
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    padding: 4px;
+    color: var(--text-muted);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deepseek-hover-result-wrapper:hover .deepseek-hover-copy-btn {
+    opacity: 0.6;
+}
+
+.deepseek-hover-result-wrapper:hover .deepseek-hover-copy-btn:hover {
+    opacity: 1;
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.deepseek-hover-result {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px 8px 16px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--text-normal);
+    min-height: 80px;
+    max-height: none;
+}
+
+.deepseek-hover-user-msg {
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    background: var(--background-secondary-alt);
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: var(--text-muted);
+    border-left: 3px solid var(--interactive-accent);
+}
+
+.deepseek-hover-assistant-msg {
+    margin-top: 8px;
+}
+
+.deepseek-hover-result p:first-child {
+    margin-top: 0;
+}
+
+/* Footer Wrapper (Soft Integrated Panel) */
+.chat-footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 16px;
+    /* Generous padding for un-cramped feel */
+    background: color-mix(in srgb, var(--background-secondary) 85%, transparent);
+    border-top: 1px solid var(--background-modifier-border);
+    box-sizing: border-box;
+}
+
+/* Selected Text Badge (Scrollable and multi-line) */
+.deepseek-hover-context {
+    padding: 6px 10px;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    background: var(--background-secondary-alt) !important;
+    border: none !important;
+    border-left: 3px solid var(--interactive-accent) !important;
+    border-radius: 4px !important; 
+    margin: 0 0 12px 4px;
+    max-height: 120px;
+    line-height: 1.5;
+    overflow-y: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.deepseek-hover-context::-webkit-scrollbar {
+    width: 4px;
+}
+
+.deepseek-hover-context::-webkit-scrollbar-thumb {
+    background: var(--background-modifier-border-hover);
+    border-radius: 4px;
+}
+
+/* Input Wrapper (Completely invisible container) */
+.deepseek-hover-input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 4px; 
+    box-sizing: border-box;
+    transition: none;
+}
+
+.deepseek-hover-input-wrapper:focus-within {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Borderless Input Field */
+.deepseek-hover-input {
+    flex: 1;
+    min-height: 28px;
+    max-height: 120px;
+    background: transparent !important;
+    border: none !important;
+    padding: 6px 8px;
+    font-size: 0.95em;
+    color: var(--text-normal);
+    resize: none;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.deepseek-hover-input::placeholder {
+    color: var(--text-faint);
+}
+
+/* Enter and Esc Key Hint Icons */
+.deepseek-hover-hint-icons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding-left: 8px;
+    user-select: none;
+}
+
+.deepseek-key-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+    min-width: 22px;
+    padding: 0 6px;
+    font-size: 0.7em;
+    font-weight: 600;
+    font-family: var(--font-monospace);
+    color: var(--text-muted);
+    background: var(--background-secondary-alt);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    /* Discrete sophisticated look */
+}
+
+/* Subtle Helper Text Below */
+.deepseek-hover-helper-text {
+    width: 100%;
+    text-align: center;
+    font-size: 0.75em;
+    color: var(--text-faint);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+    user-select: none;
+}
+
+.deepseek-is-loading {
+    opacity: 0.7;
+    position: relative;
+}
+
+.deepseek-error {
+    color: var(--text-error);
+    font-weight: 500;
+    padding: 8px;
+    background: var(--background-modifier-error);
+    border-radius: 4px;
+}
+
+@keyframes deepseek-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar for result area */
+.deepseek-hover-result::-webkit-scrollbar {
+    width: 6px;
+}
+
+.deepseek-hover-result::-webkit-scrollbar-thumb {
+    background: var(--background-modifier-border);
+    border-radius: 10px;
+}
+/* Modal Styles */
+.ds-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.ds-generate-btn {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: transform 0.1s ease;
+}
+
+.ds-generate-btn:hover {
+    transform: scale(1.02);
+}
+
+.ds-generate-btn:active {
+    transform: scale(0.98);
+}
+
+/* Canvas Prompt Modal - Glassmorphic Style */
+.ds-canvas-prompt-modal {
+    background: var(--background-primary) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--background-modifier-border) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    max-width: 500px !important;
+}
+
+.ds-canvas-prompt-modal .modal-title {
+    padding: 16px 20px 8px 20px;
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.ds-canvas-prompt-modal .modal-content {
+    padding: 0 !important;
+}
+
+.ds-prompt-body {
+    padding: 12px 20px;
+}
+
+.ds-prompt-textarea {
+    width: 100%;
+    min-height: 100px;
+    background: var(--background-secondary-alt) !important;
+    border: 1px solid var(--background-modifier-border) !important;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1em;
+    color: var(--text-normal);
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.ds-prompt-textarea:focus {
+    border-color: var(--interactive-accent) !important;
+}
+
+.ds-prompt-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: color-mix(in srgb, var(--background-secondary) 85%, transparent);
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.ds-prompt-hints {
+    font-size: 0.75em;
+    color: var(--text-faint);
+}
+
+/* AI Thinking State - Enhances the breathing effect when AI is active */
+body.ds-is-ai-thinking .canvas-node.is-focused .canvas-node-container,
+body.ds-is-ai-thinking .canvas-node.is-selected .canvas-node-container {
+    border-color: #a855f7 !important;
+    border-width: 3px !important;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.8), 0 0 40px rgba(168, 85, 247, 0.4) !important;
+    /* Speed up animation to show "processing" activity */
+    animation: ai-pulse-glow 0.8s infinite alternate ease-in-out !important; 
+    transition: all 0.5s ease;
+}
+
+/* Global status indicator in the canvas */
+body.ds-is-ai-thinking::after {
+    content: "AI is thinking...";
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: var(--background-secondary);
+    color: var(--text-accent);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    border: 1px solid var(--background-modifier-border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    pointer-events: none;
+    animation: ds-fade-in 0.3s ease;
+}
+
+@keyframes ds-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fallback Keyframes for AI Pulse - Ensuring the effect works even without user snippets */
+@keyframes ai-pulse-glow {
+    0% {
+        box-shadow: 0 0 5px rgba(168, 85, 247, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.8), 0 0 40px rgba(168, 85, 247, 0.5);
+    }
+}
+
+/* ─── Note to Canvas Modal ──────────────────────────────────────────────── */
+
+.ds-n2c-modal {
+    background: var(--background-primary) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-radius: 14px !important;
+    border: 1px solid var(--background-modifier-border) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25) !important;
+    max-width: 520px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+}
+
+.ds-n2c-modal .modal-title {
+    padding: 18px 22px 10px 22px;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.ds-n2c-modal .modal-content {
+    padding: 0 !important;
+}
+
+/* Sections */
+.ds-n2c-section {
+    padding: 12px 22px;
+}
+
+.ds-n2c-section + .ds-n2c-section {
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.ds-n2c-section-label {
+    font-size: 0.78em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 0 0 10px 0;
+}
+
+/* Mode Cards (Radio) */
+.ds-n2c-mode-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ds-n2c-mode-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--background-modifier-border);
+    border-radius: 10px;
+    cursor: pointer;
+    background: var(--background-secondary);
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.ds-n2c-mode-card:hover {
+    border-color: var(--interactive-accent);
+    background: var(--background-secondary-alt);
+}
+
+.ds-n2c-mode-card.is-selected {
+    border-color: var(--interactive-accent);
+    background: color-mix(in srgb, var(--interactive-accent) 10%, var(--background-secondary));
+}
+
+.ds-n2c-radio {
+    accent-color: var(--interactive-accent);
+    flex-shrink: 0;
+}
+
+.ds-n2c-mode-label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    cursor: pointer;
+}
+
+.ds-n2c-mode-title {
+    font-weight: 600;
+    font-size: 0.95em;
+    color: var(--text-normal);
+}
+
+.ds-n2c-mode-desc {
+    font-size: 0.78em;
+    color: var(--text-muted);
+}
+
+/* Textarea */
+.ds-n2c-textarea {
+    width: 100%;
+    min-height: 80px;
+    background: var(--background-secondary-alt) !important;
+    border: 1.5px solid var(--background-modifier-border) !important;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.93em;
+    color: var(--text-normal);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.ds-n2c-textarea:focus {
+    border-color: var(--interactive-accent) !important;
+}
+
+/* Checkbox Row */
+.ds-n2c-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px 14px 22px;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.ds-n2c-checkbox {
+    accent-color: var(--interactive-accent);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.ds-n2c-checkbox-label {
+    font-size: 0.9em;
+    color: var(--text-normal);
+    cursor: pointer;
+}
+
+/* Footer Buttons */
+.ds-n2c-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 22px;
+    background: color-mix(in srgb, var(--background-secondary) 85%, transparent);
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.ds-n2c-btn-cancel {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 8px;
+    padding: 8px 18px;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.ds-n2c-btn-cancel:hover {
+    background: var(--background-secondary-alt);
+    color: var(--text-normal);
+}
+
+.ds-n2c-btn-generate {
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: transform 0.1s ease, opacity 0.15s;
+}
+
+.ds-n2c-btn-generate:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.ds-n2c-btn-generate:active {
+    transform: scale(0.98);
+}
+
+/* ── Progress: Status Bar ─────────────────────────────────────────────── */
+
+.ds-n2c-status-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 22px;
+    border-top: 1px solid var(--background-modifier-border);
+    background: color-mix(in srgb, var(--background-secondary-alt) 60%, transparent);
+    min-height: 38px;
+    transition: opacity 0.25s;
+}
+
+.ds-n2c-status-hidden {
+    display: none;
+}
+
+.ds-n2c-status-bar.ds-n2c-status-error {
+    background: color-mix(in srgb, var(--background-modifier-error-hover) 40%, transparent);
+    border-top-color: var(--text-error);
+}
+
+.ds-n2c-status-text {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    flex: 1;
+}
+
+.ds-n2c-status-bar.ds-n2c-status-error .ds-n2c-status-text {
+    color: var(--text-error);
+}
+
+/* CSS Spinner */
+.ds-n2c-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--background-modifier-border);
+    border-top-color: var(--interactive-accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: ds-spin 0.8s linear infinite;
+}
+
+.ds-n2c-spinner.ds-n2c-spinner-done {
+    border-color: #4ade80;
+    border-top-color: #4ade80;
+    animation: none;
+}
+
+.ds-n2c-spinner.ds-n2c-spinner-hidden {
+    display: none;
+}
+
+@keyframes ds-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Progress: Stop Button ────────────────────────────────────────────── */
+
+.ds-n2c-btn-stop {
+    background: color-mix(in srgb, var(--text-error) 12%, var(--background-secondary)) !important;
+    color: var(--text-error) !important;
+    border: 1.5px solid var(--text-error) !important;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.ds-n2c-btn-stop:hover {
+    opacity: 0.85;
+}
+
+/* ── Progress: AI Thinking – Modal Pulse Glow ─────────────────────────── */
+
+.ds-n2c-modal.ds-n2c-ai-thinking {
+    animation: ds-n2c-border-pulse 1.2s infinite alternate ease-in-out !important;
+}
+
+@keyframes ds-n2c-border-pulse {
+    0% {
+        box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 0 0 0 rgba(168, 85, 247, 0);
+        border-color: var(--background-modifier-border) !important;
+    }
+    100% {
+        box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 0 18px 4px rgba(168, 85, 247, 0.55);
+        border-color: rgba(168, 85, 247, 0.7) !important;
+    }
+}
+
+/* ── Progress: Success FadeOut ────────────────────────────────────────── */
+
+.ds-n2c-modal.ds-n2c-fadeout {
+    animation: ds-n2c-fadeout 0.35s ease-out forwards !important;
+}
+
+@keyframes ds-n2c-fadeout {
+    0%   { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.96); }
+}
