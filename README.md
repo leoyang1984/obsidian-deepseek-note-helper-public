@@ -1,6 +1,6 @@
 # DeepSeek Note Helper
 
-[English Version Below](#english-version) | [中文版往下看](#中文版) 
+
 
 ---
 
